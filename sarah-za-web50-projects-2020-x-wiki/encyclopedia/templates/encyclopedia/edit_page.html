@@ -1,0 +1,14 @@
+{% extends "encyclopedia/layout.html" %}
+
+{% block body %}
+<h2><label for="entry-box">Edit Page</label></h2>
+<!-- This form will create an entry for the entered content-->
+<form action = "{% url 'save_page' %}" method = "POST"> 
+    {% csrf_token %}
+    <p><input type="text" id="title-field" name="usr_title" placeholder="Enter Title Here" value = "{{ title }}"></p> 
+    <textarea id = "entry-box" name="usr_entry" rows="3" cols="25"> {{ content |safe }} </textarea>
+    <br> 
+    <input class="submit-btn" value = "Update Page" type="submit">
+</form>
+
+{% endblock %}
